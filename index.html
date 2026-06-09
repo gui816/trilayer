@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TriLayer Engineering — Senior Software Consultancy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #4F46E5;
+      --primary-dark: #3730A3;
+      --accent: #06B6D4;
+      --bg: #0F172A;
+      --bg2: #1E293B;
+      --bg3: #334155;
+      --text: #F1F5F9;
+      --muted: #94A3B8;
+      --border: #334155;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 1.2rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--primary); color: white;
+      padding: 0.5rem 1.2rem; border-radius: 8px;
+      text-decoration: none; font-size: 0.9rem; font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--primary-dark); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: radial-gradient(ellipse at top, #1e1b4b 0%, var(--bg) 60%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234F46E5' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; max-width: 800px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(79, 70, 229, 0.2);
+      border: 1px solid rgba(79, 70, 229, 0.4);
+      color: #a5b4fc;
+      padding: 0.3rem 1rem; border-radius: 999px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800; line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.1rem; color: var(--muted);
+      max-width: 600px; margin: 0 auto 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--primary); color: white;
+      padding: 0.9rem 2rem; border-radius: 10px;
+      text-decoration: none; font-weight: 600; font-size: 1rem;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.9rem 2rem; border-radius: 10px;
+      text-decoration: none; font-weight: 600; font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* STATS */
+    .stats {
+      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+    }
+    .stat { text-align: center; }
+    .stat-number { font-size: 2rem; font-weight: 800; color: var(--text); }
+    .stat-number span { color: var(--accent); }
+    .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* SECTION */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--muted); max-width: 600px; margin-bottom: 3rem; }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem;
+      transition: all 0.3s;
+    }
+    .service-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
+    }
+    .service-icon {
+      font-size: 2rem; margin-bottom: 1rem;
+    }
+    .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+
+    /* TEAM */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .team-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 2rem;
+      transition: all 0.3s;
+    }
+    .team-card:hover {
+      border-color: rgba(79, 70, 229, 0.5);
+      box-shadow: 0 20px 40px rgba(79, 70, 229, 0.08);
+    }
+    .team-avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 800; color: white;
+      margin-bottom: 1rem;
+    }
+    .team-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .team-role {
+      font-size: 0.85rem; color: var(--accent); font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .team-bio { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .team-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      background: rgba(79, 70, 229, 0.15);
+      border: 1px solid rgba(79, 70, 229, 0.3);
+      color: #a5b4fc;
+      padding: 0.25rem 0.75rem; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 500;
+    }
+    .team-linkedin {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--muted); text-decoration: none;
+      font-size: 0.85rem; margin-top: 1rem;
+      transition: color 0.2s;
+    }
+    .team-linkedin:hover { color: var(--accent); }
+
+    /* WHY US */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .why-item {
+      padding: 1.5rem;
+      border-left: 3px solid var(--primary);
+      background: var(--bg2);
+      border-radius: 0 12px 12px 0;
+    }
+    .why-item h4 { font-weight: 700; margin-bottom: 0.5rem; }
+    .why-item p { color: var(--muted); font-size: 0.9rem; }
+
+    /* PROCESS */
+    .process-steps {
+      display: flex; flex-direction: column; gap: 1.5rem;
+      max-width: 700px;
+    }
+    .process-step {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+    }
+    .step-number {
+      min-width: 48px; height: 48px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem;
+    }
+    .step-content h4 { font-weight: 700; margin-bottom: 0.3rem; }
+    .step-content p { color: var(--muted); font-size: 0.9rem; }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-dark), var(--bg));
+      border: 1px solid rgba(79, 70, 229, 0.3);
+      border-radius: 24px;
+      padding: 4rem 3rem;
+      text-align: center;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+    .cta-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
+    .cta-section p { color: var(--muted); margin-bottom: 2rem; font-size: 1.05rem; }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 2rem;
+      color: var(--muted); font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .stats { gap: 1.5rem; }
+      .cta-section { padding: 2.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">TriLayer</div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#team">Team</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Let's talk →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🚀 Senior Engineering Consultancy</div>
+      <h1>
+        Engineering that<br/>
+        <span>scales with you</span>
+      </h1>
+      <p>
+        Three senior engineers. Architecture, data, and product under one roof.
+        We help companies build the right thing — and build it right.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Start a conversation →</a>
+        <a href="#team" class="btn-secondary">Meet the team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-number">20<span>+</span></div>
+      <div class="stat-label">Years combined experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">3<span>x</span></div>
+      <div class="stat-label">Senior / Staff Engineers</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">10<span>+</span></div>
+      <div class="stat-label">Industries served</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">€0</div>
+      <div class="stat-label">Junior overhead</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-label">What we do</div>
+      <h2 class="section-title">Services</h2>
+      <p class="section-sub">Hands-on engineering from people who've built production systems at scale — not slide decks.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🏗️</div>
+          <h3>Architecture & Technical Audit</h3>
+          <p>We review your stack, identify bottlenecks, and deliver a clear, actionable roadmap. No fluff — just what you actually need to fix or improve.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Data Engineering & Pipelines</h3>
+          <p>From raw data to reliable insights. We design and build scalable data infrastructure — ETL, data lakes, real-time streaming, and analytics platforms.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">⚡</div>
+          <h3>Backend & SaaS Development</h3>
+          <p>API design, microservices, payment integrations, and multi-tenant SaaS architecture. We ship production-grade code that your team can maintain.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🤖</div>
+          <h3>AI & IoT Integration</h3>
+          <p>Bringing intelligence to your products — AI-powered features, IoT systems, and Industry 4.0 solutions. From concept to working prototype.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">👥</div>
+          <h3>Staff Augmentation</h3>
+          <p>Need a senior engineer embedded in your team for a sprint, quarter, or project? We integrate fast and contribute from day one.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎯</div>
+          <h3>Engineering Leadership</h3>
+          <p>Interim CTO, technical co-founder support, or engineering team setup. We help startups and scale-ups build their engineering culture the right way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" style="background: var(--bg2);">
+    <div class="container">
+      <div class="section-label">The people</div>
+      <h2 class="section-title">Meet the team</h2>
+      <p class="section-sub">Three engineers who've built real things, led real teams, and know the difference between good architecture and good intentions.</p>
+      <div class="team-grid">
+
+        <!-- Guilherme -->
+        <div class="team-card">
+          <div class="team-avatar">GG</div>
+          <div class="team-name">Guilherme Guerreiro</div>
+          <div class="team-role">Engineering Lead · Data, Backend & Research</div>
+          <div class="team-bio">
+            Tech Manager and Engineering Lead with 7+ years at We:Digitek. Former researcher at UNINOVA, co-founder, and MSc in Electrical & Computer Engineering from NOVA Lisboa. <strong style="color:#a5b4fc">11 peer-reviewed publications · 185+ citations</strong> across IEEE, ASME, Elsevier, and Springer — covering Big Data, ITS, Industry 4.0, and Digital Twins. Built production payment systems (Stripe, Sibs, Mercado Pago), IoT platforms, and data pipelines from scratch.
+          </div>
+          <div class="team-tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">Python</span>
+            <span class="tag">Big Data</span>
+            <span class="tag">Payments</span>
+            <span class="tag">IoT</span>
+            <span class="tag">Microservices</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Spark / Hadoop</span>
+            <span class="tag">Digital Twin</span>
+            <span class="tag">Industry 4.0</span>
+          </div>
+          <div style="margin-top:1.2rem; padding:1rem; background:rgba(79,70,229,0.08); border-radius:10px; border:1px solid rgba(79,70,229,0.2);">
+            <div style="font-size:0.75rem; font-weight:700; color:#a5b4fc; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.6rem;">Selected Publications</div>
+            <ul style="list-style:none; font-size:0.8rem; color:#94A3B8; line-height:1.8;">
+              <li>📄 Big Data architecture for ITS — IEEE IS 2016 <span style="color:#06B6D4">(73 citations)</span></li>
+              <li>📄 Real-time road traffic monitoring — IEEE ICE 2018 <span style="color:#06B6D4">(31 citations)</span></li>
+              <li>📄 Dynamic toll charging system — Computers &amp; Industrial Engineering, Elsevier 2019 <span style="color:#06B6D4">(21 citations)</span></li>
+              <li>📄 Swarm architecture for Industry 4.0 — IFAC 2019 <span style="color:#06B6D4">(16 citations)</span></li>
+              <li>📄 Digital Twin for automotive logistics — ASME 2019 <span style="color:#06B6D4">(10 citations)</span></li>
+            </ul>
+          </div>
+          <a href="https://scholar.google.com/citations?user=hdieFgoAAAAJ" target="_blank" class="team-linkedin" style="margin-right:1rem;">🎓 Google Scholar</a>
+          <a href="https://www.linkedin.com/in/guilherme-guerreiro-3b25b7a1/" target="_blank" class="team-linkedin">
+            🔗 LinkedIn
+          </a>
+        </div>
+
+        <!-- Cláudio -->
+        <div class="team-card">
+          <div class="team-avatar">CA</div>
+          <div class="team-name">Cláudio Alves</div>
+          <div class="team-role">Staff Software Engineer · Product & Platform</div>
+          <div class="team-bio">
+            Staff Software Engineer at Wellhub (formerly Gympass), one of the world's leading wellness platforms. 4+ years building high-availability backend systems at scale, with a background in sustainable energy systems and full-stack product delivery.
+          </div>
+          <div class="team-tags">
+            <span class="tag">Staff Engineer</span>
+            <span class="tag">Backend</span>
+            <span class="tag">Platform</span>
+            <span class="tag">Scale</span>
+            <span class="tag">Product</span>
+            <span class="tag">Java</span>
+          </div>
+          <a href="https://www.linkedin.com/in/cbalves/" target="_blank" class="team-linkedin">
+            🔗 LinkedIn
+          </a>
+        </div>
+
+        <!-- Miguel -->
+        <div class="team-card">
+          <div class="team-avatar">MS</div>
+          <div class="team-name">Miguel de Sousa</div>
+          <div class="team-role">Principal Engineer · IoT, AI & Product</div>
+          <div class="team-bio">
+            Published author (Packt Publishing — "Internet of Things with Intel Galileo"), PRINCE2 certified, and a decade+ of hands-on engineering across IoT, AI, SaaS, and enterprise systems. Worked on digitalization projects across Europe, Brazil, and Africa.
+          </div>
+          <div class="team-tags">
+            <span class="tag">IoT</span>
+            <span class="tag">AI</span>
+            <span class="tag">PRINCE2</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Product</span>
+            <span class="tag">Enterprise</span>
+          </div>
+          <a href="https://www.linkedin.com/in/miguel-de-sousa-8877011a/" target="_blank" class="team-linkedin">
+            🔗 LinkedIn
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section>
+    <div class="container">
+      <div class="section-label">Why us</div>
+      <h2 class="section-title">Senior from day one</h2>
+      <p class="section-sub">No juniors warming up on your project. No account managers in the middle. You talk directly to the engineers doing the work.</p>
+      <div class="why-grid">
+        <div class="why-item">
+          <h4>Zero junior overhead</h4>
+          <p>Every hour you pay for is a senior engineer's hour. No training, no hand-holding, no ramp-up waste.</p>
+        </div>
+        <div class="why-item">
+          <h4>Full-stack seniority</h4>
+          <p>Architecture, data, backend, product, AI, IoT — we cover the whole stack without context-switching chaos.</p>
+        </div>
+        <div class="why-item">
+          <h4>Real delivery, not slides</h4>
+          <p>We ship production code. Assessments come with working prototypes, not 80-page PowerPoint decks.</p>
+        </div>
+        <div class="why-item">
+          <h4>European timezone</h4>
+          <p>Based in Portugal. Fluent in Portuguese, English, and remote collaboration. No async nightmares.</p>
+        </div>
+        <div class="why-item">
+          <h4>Research-grade rigour</h4>
+          <p>Published academic research in Big Data and IoT. We know the theory and we've battle-tested it in production.</p>
+        </div>
+        <div class="why-item">
+          <h4>Payments & compliance ready</h4>
+          <p>Deep experience with Stripe, Sibs, Mercado Pago, GDPR, and regulated environments. We know the constraints.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" style="background: var(--bg2);">
+    <div class="container">
+      <div class="section-label">How we work</div>
+      <h2 class="section-title">From hello to shipped</h2>
+      <p class="section-sub">A simple, transparent process designed to minimise surprises and maximise outcomes.</p>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h4>Discovery call (free)</h4>
+            <p>30 minutes to understand your problem, your stack, and whether we're a good fit. No pitch, no pressure.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h4>Proposal & scoping</h4>
+            <p>We send a clear proposal with scope, timeline, and price. Fixed fee for audits; time & materials for delivery work.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h4>Embedded delivery</h4>
+            <p>We work in your tools (Jira, Linear, Slack, GitHub) with weekly syncs and async updates. Transparent, always.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <h4>Handoff & documentation</h4>
+            <p>Every engagement ends with full documentation, knowledge transfer, and your team fully in control.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact">
+    <div class="container">
+      <div class="cta-section">
+        <h2>Ready to build something solid?</h2>
+        <p>Whether you need an architecture review, a data platform, or a senior engineer embedded in your team — let's talk.</p>
+        <a href="mailto:hello@trilayer.dev" class="btn-primary">📩 hello@trilayer.dev</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 TriLayer Engineering · Portugal · Remote-first</p>
+  </footer>
+
+</body>
+</html>
