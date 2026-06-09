@@ -273,6 +273,68 @@ footer{padding:2.5rem;text-align:center;border-top:1px solid var(--border);color
 .rv.in{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
 .d4{transition-delay:.28s}.d5{transition-delay:.35s}.d6{transition-delay:.42s}
+
+/* ── TECH LOGOS ── */
+.logos-band{padding:4rem 2.5rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--ink2)}
+.logos-lbl{text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:2rem}
+.logos-track{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center;align-items:center}
+.logo-pill{display:flex;align-items:center;gap:.6rem;padding:.5rem 1.2rem;border-radius:10px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.03);color:rgba(255,255,255,.35);font-size:.82rem;font-weight:600;transition:all .3s}
+.logo-pill:hover{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.65);background:rgba(255,255,255,.06)}
+.logo-pill span{font-size:1.1rem}
+
+/* ── VISUAL CARDS ── */
+.visual-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media(max-width:900px){.visual-grid{grid-template-columns:1fr}}
+.vis-card{border-radius:20px;overflow:hidden;border:1px solid var(--border);position:relative;aspect-ratio:4/3;display:flex;align-items:flex-end;transition:all .4s cubic-bezier(.23,1,.32,1)}
+.vis-card:hover{transform:scale(1.02);box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.vis-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:6rem;transition:transform .4s}
+.vis-card:hover .vis-bg{transform:scale(1.08)}
+.vis-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.2) 50%,transparent 100%)}
+.vis-content{position:relative;z-index:1;padding:1.8rem}
+.vis-tag{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .7rem;border-radius:6px;display:inline-block;margin-bottom:.6rem}
+.vis-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
+.vis-card p{color:rgba(255,255,255,.55);font-size:.82rem;line-height:1.6}
+.vis-card:nth-child(1) .vis-bg{background:linear-gradient(135deg,rgba(124,58,237,.35),rgba(37,99,235,.35))}
+.vis-card:nth-child(2) .vis-bg{background:linear-gradient(135deg,rgba(14,165,233,.35),rgba(16,185,129,.35))}
+.vis-card:nth-child(3) .vis-bg{background:linear-gradient(135deg,rgba(236,72,153,.35),rgba(245,158,11,.35))}
+.vis-card:nth-child(1) .vis-tag{background:rgba(196,181,253,.15);color:#c4b5fd}
+.vis-card:nth-child(2) .vis-tag{background:rgba(110,231,183,.15);color:#6ee7b7}
+.vis-card:nth-child(3) .vis-tag{background:rgba(251,113,133,.15);color:#fb7185}
+
+/* ── CHATBOT ── */
+#chat-btn{position:fixed;bottom:2rem;left:2rem;z-index:200;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--v),var(--c));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 8px 28px rgba(124,58,237,.5);transition:all .3s;animation:chatPulse 3s ease-in-out infinite}
+@keyframes chatPulse{0%,100%{box-shadow:0 8px 28px rgba(124,58,237,.5)}50%{box-shadow:0 8px 36px rgba(124,58,237,.8),0 0 0 8px rgba(124,58,237,.1)}}
+#chat-btn:hover{transform:scale(1.1)}
+#chat-btn .chat-notif{position:absolute;top:-2px;right:-2px;width:14px;height:14px;background:var(--g);border-radius:50%;border:2px solid var(--ink);animation:blink 2s infinite}
+#chat-box{position:fixed;bottom:5.5rem;left:2rem;z-index:200;width:360px;max-height:520px;background:rgba(17,20,32,.97);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);display:none;flex-direction:column;animation:slideUp .3s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+#chat-box.open{display:flex}
+.chat-head{padding:1.2rem 1.4rem;background:linear-gradient(135deg,rgba(124,58,237,.25),rgba(14,165,233,.2));display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
+.chat-head-left{display:flex;align-items:center;gap:.8rem}
+.chat-av{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--v),var(--c));display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.chat-name{font-weight:700;font-size:.92rem}
+.chat-status{font-size:.72rem;color:var(--g);display:flex;align-items:center;gap:.35rem}
+.chat-status::before{content:'';width:6px;height:6px;background:var(--g);border-radius:50%;box-shadow:0 0 6px var(--g)}
+.chat-close{background:none;border:none;color:rgba(255,255,255,.4);font-size:1.2rem;cursor:pointer;transition:color .2s;padding:.2rem}
+.chat-close:hover{color:var(--text)}
+.chat-msgs{flex:1;overflow-y:auto;padding:1.2rem;display:flex;flex-direction:column;gap:.9rem;max-height:300px}
+.chat-msgs::-webkit-scrollbar{width:3px}.chat-msgs::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+.msg{max-width:82%;animation:msgIn .25s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.msg.bot{align-self:flex-start}
+.msg.usr{align-self:flex-end}
+.msg-bubble{padding:.75rem 1rem;border-radius:14px;font-size:.85rem;line-height:1.55}
+.msg.bot .msg-bubble{background:rgba(255,255,255,.07);color:var(--text);border-radius:4px 14px 14px 14px}
+.msg.usr .msg-bubble{background:linear-gradient(135deg,var(--v),var(--b));color:#fff;border-radius:14px 14px 4px 14px}
+.msg-time{font-size:.65rem;color:rgba(255,255,255,.25);margin-top:.25rem;padding:0 .2rem}
+.chat-suggestions{padding:.6rem 1.2rem;display:flex;gap:.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.05)}
+.sug-btn{padding:.35rem .85rem;border-radius:20px;border:1px solid rgba(255,255,255,.12);background:transparent;color:rgba(255,255,255,.55);font-size:.75rem;font-weight:500;cursor:pointer;font-family:inherit;transition:all .2s}
+.sug-btn:hover{border-color:rgba(196,181,253,.5);color:#c4b5fd;background:rgba(124,58,237,.1)}
+.chat-input-row{padding:1rem 1.2rem;border-top:1px solid rgba(255,255,255,.07);display:flex;gap:.6rem}
+#chat-input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:11px;padding:.65rem .9rem;color:var(--text);font-size:.85rem;outline:none;font-family:inherit;transition:all .2s}
+#chat-input:focus{border-color:rgba(124,58,237,.5);background:rgba(124,58,237,.07)}
+#chat-send{background:linear-gradient(135deg,var(--v),var(--b));color:#fff;border:none;border-radius:11px;padding:.65rem .9rem;cursor:pointer;font-size:.9rem;transition:all .2s}
+#chat-send:hover{transform:scale(1.08)}
   </style>
 </head>
 <body>
@@ -292,6 +354,28 @@ footer{padding:2.5rem;text-align:center;border-top:1px solid var(--border);color
 
 <!-- SITE -->
 <div id="site">
+
+<!-- CHATBOT -->
+<button id="chat-btn" onclick="toggleChat()"><span>💬</span><span class="chat-notif"></span></button>
+<div id="chat-box">
+  <div class="chat-head">
+    <div class="chat-head-left">
+      <div class="chat-av">🤖</div>
+      <div><div class="chat-name">TriLayer Assistant</div><div class="chat-status">Online · typically replies in seconds</div></div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-msgs" id="chat-msgs"></div>
+  <div class="chat-suggestions" id="chat-sugs">
+    <button class="sug-btn" onclick="sendSug(this)">What do you build?</button>
+    <button class="sug-btn" onclick="sendSug(this)">How does pricing work?</button>
+    <button class="sug-btn" onclick="sendSug(this)">Can I talk to the team?</button>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chat-input" placeholder="Ask us anything..." onkeydown="if(event.key==='Enter')sendMsg()"/>
+    <button id="chat-send" onclick="sendMsg()">↑</button>
+  </div>
+</div>
 
 <nav id="nav">
   <div class="nlogo">TriLayer</div>
@@ -390,6 +474,25 @@ footer{padding:2.5rem;text-align:center;border-top:1px solid var(--border);color
   </div>
 </div>
 
+<!-- TECH STACK LOGOS -->
+<div class="logos-band">
+  <div class="logos-lbl">Technologies we work with</div>
+  <div class="logos-track">
+    <div class="logo-pill"><span>⚡</span>Node.js</div>
+    <div class="logo-pill"><span>🐍</span>Python</div>
+    <div class="logo-pill"><span>☕</span>Java</div>
+    <div class="logo-pill"><span>🍃</span>MongoDB</div>
+    <div class="logo-pill"><span>🐘</span>PostgreSQL</div>
+    <div class="logo-pill"><span>✨</span>Apache Spark</div>
+    <div class="logo-pill"><span>🐳</span>Docker / K8s</div>
+    <div class="logo-pill"><span>☁️</span>AWS / GCP / Azure</div>
+    <div class="logo-pill"><span>💳</span>Stripe / Sibs</div>
+    <div class="logo-pill"><span>🤖</span>OpenAI / LLMs</div>
+    <div class="logo-pill"><span>👁️</span>Computer Vision</div>
+    <div class="logo-pill"><span>🔁</span>Kafka / RabbitMQ</div>
+  </div>
+</div>
+
 <!-- SERVICES -->
 <div class="sec" id="services">
   <div class="wrap ev">
@@ -483,6 +586,44 @@ footer{padding:2.5rem;text-align:center;border-top:1px solid var(--border);color
           <div class="pill-lbl">Stack</div>
           <div class="pills"><span class="pt">Node.js</span><span class="pt">IoT</span><span class="pt">Computer Vision</span><span class="pt">PRINCE2</span></div>
           <a href="#contact" class="tc-cta">↓ Work with us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VISUAL SECTION -->
+<div class="sec dk">
+  <div class="wrap ec">
+    <div class="eyebrow rv">What we build</div>
+    <h2 class="h2 rv d1">Systems that last.<br/>Interfaces that delight.</h2>
+    <p class="sub rv d2">From data pipelines to consumer apps — we ship things that work at scale.</p>
+    <div class="visual-grid">
+      <div class="vis-card rv d1">
+        <div class="vis-bg"><span style="filter:drop-shadow(0 0 40px rgba(124,58,237,.6))">⚡</span></div>
+        <div class="vis-overlay"></div>
+        <div class="vis-content">
+          <span class="vis-tag">Data Engineering</span>
+          <h3>Real-time pipelines</h3>
+          <p>Streaming architectures that process millions of events per second without breaking a sweat.</p>
+        </div>
+      </div>
+      <div class="vis-card rv d2">
+        <div class="vis-bg"><span style="filter:drop-shadow(0 0 40px rgba(16,185,129,.6))">🤖</span></div>
+        <div class="vis-overlay"></div>
+        <div class="vis-content">
+          <span class="vis-tag">AI / ML</span>
+          <h3>AI at the core</h3>
+          <p>Language models, computer vision, and predictive systems — wired in from architecture, not added on top.</p>
+        </div>
+      </div>
+      <div class="vis-card rv d3">
+        <div class="vis-bg"><span style="filter:drop-shadow(0 0 40px rgba(236,72,153,.6))">📱</span></div>
+        <div class="vis-overlay"></div>
+        <div class="vis-content">
+          <span class="vis-tag">Product</span>
+          <h3>Consumer platforms</h3>
+          <p>B2C products with millions of users — built for resilience, observability, and zero-downtime deploys.</p>
         </div>
       </div>
     </div>
@@ -597,6 +738,71 @@ function boot(){
   initParticles();
   initScroll();
   initCounters();
+  initChat();
+}
+
+/* CHATBOT */
+const CHAT_REPLIES={
+  "what do you build":["We build full software projects end-to-end — data pipelines, SaaS backends, AI-powered systems, IoT platforms, and payment integrations. Always as a team, always production-grade.","From real-time data pipelines to consumer apps at scale. We've shipped across ITS, fintech, health tech, food tech, IoT, and enterprise SaaS. Want to tell us about your project?"],
+  "how does pricing work":["We work on two models:\n\n• **Fixed fee** for well-defined audits and technical assessments.\n• **Time & materials** for delivery projects.\n\nWe're transparent about scope from day one — no surprises. Want a free discovery call to discuss yours?","Pricing depends on scope. We start with a free 30-minute discovery call to understand your project, then propose a clear budget. No hidden fees."],
+  "can i talk to the team":["Absolutely! The fastest way is to drop us an email at **hello@trilayer.dev** — we respond within 24h. You can also use the form below to start a conversation.","Yes! Click the 'Start a project conversation' button at the bottom of the page, or email us directly at hello@trilayer.dev. First discovery call is always free."],
+  "ai":["AI is at the core of how we build — not bolted on at the end. We design data architectures that feed AI from day one, and have hands-on experience integrating LLMs, computer vision, and predictive models into production systems.\n\nOur work is backed by 185+ academic citations in Big Data and intelligent systems.","We work with LLMs, computer vision, classical ML, and IoT data streams. Our team has published peer-reviewed research in intelligent systems — so when we say AI-first, we mean it."],
+  "who are you":["TriLayer is a team of three senior engineers — an Engineering Lead, a Staff Engineer, and a Principal Engineer. We work as a single unit, bringing architecture, data, and product expertise to every project.","We're three senior engineers based in Portugal who work as one team. No juniors, no account managers — just experienced engineers who own your project end-to-end."],
+  "contact":["You can reach us at **hello@trilayer.dev**. We typically respond within 24 hours, and the first discovery call is always free!"],
+  "default":["That's a great question! For detailed discussions about your specific needs, the best next step is a free 30-minute discovery call. Want me to help you get in touch with the team?","I'd love to help with that. For anything beyond general questions, our team is the best resource — drop us a line at **hello@trilayer.dev** or click the button below to start a conversation!","Interesting! Our team has deep experience across many domains. The fastest way to explore if we're a fit is a free discovery call — no commitment, no pitch. Want to book one?"]
+};
+let chatOpen=false;
+function toggleChat(){
+  chatOpen=!chatOpen;
+  const box=document.getElementById("chat-box");
+  box.classList.toggle("open",chatOpen);
+  const notif=document.querySelector(".chat-notif");
+  if(chatOpen){notif&&(notif.style.display="none");setTimeout(()=>document.getElementById("chat-input").focus(),300);}
+}
+function initChat(){
+  addMsg("bot","👋 Hi! I'm the TriLayer assistant. I can tell you about our services, team, and how we work. What would you like to know?");
+}
+function addMsg(who,text){
+  const c=document.getElementById("chat-msgs");
+  const d=document.createElement("div");
+  d.className="msg "+who;
+  const now=new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
+  d.innerHTML=`<div class="msg-bubble">${text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>')}</div><div class="msg-time">${now}</div>`;
+  c.appendChild(d);
+  c.scrollTop=c.scrollHeight;
+}
+function botTyping(){
+  const c=document.getElementById("chat-msgs");
+  const d=document.createElement("div");
+  d.className="msg bot";d.id="typing";
+  d.innerHTML='<div class="msg-bubble" style="opacity:.5">✦ ✦ ✦</div>';
+  c.appendChild(d);c.scrollTop=c.scrollHeight;
+  return d;
+}
+function getReply(txt){
+  const t=txt.toLowerCase();
+  if(t.includes("build")||t.includes("do you"))return rnd(CHAT_REPLIES["what do you build"]);
+  if(t.includes("pric")||t.includes("cost")||t.includes("budget")||t.includes("rate"))return rnd(CHAT_REPLIES["how does pricing work"]);
+  if(t.includes("talk")||t.includes("meet")||t.includes("call")||t.includes("contact")||t.includes("email")||t.includes("reach"))return rnd(CHAT_REPLIES["contact"]);
+  if(t.includes("ai")||t.includes("machine")||t.includes("ml")||t.includes("llm")||t.includes("model")||t.includes("data"))return rnd(CHAT_REPLIES["ai"]);
+  if(t.includes("who")||t.includes("team")||t.includes("trilayer")||t.includes("engineer"))return rnd(CHAT_REPLIES["who are you"]);
+  return rnd(CHAT_REPLIES["default"]);
+}
+function rnd(arr){return arr[Math.floor(Math.random()*arr.length)];}
+function sendMsg(){
+  const inp=document.getElementById("chat-input");
+  const txt=inp.value.trim();if(!txt)return;
+  addMsg("usr",txt);inp.value="";
+  document.getElementById("chat-sugs").style.display="none";
+  const t=botTyping();
+  setTimeout(()=>{t.remove();addMsg("bot",getReply(txt));},700+Math.random()*600);
+}
+function sendSug(btn){
+  const txt=btn.textContent;
+  addMsg("usr",txt);
+  document.getElementById("chat-sugs").style.display="none";
+  const t=botTyping();
+  setTimeout(()=>{t.remove();addMsg("bot",getReply(txt));},700+Math.random()*600);
 }
 
 /* PARTICLES */
