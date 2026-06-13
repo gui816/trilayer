@@ -150,10 +150,38 @@ footer{padding:2rem;text-align:center;border-top:1px solid var(--border);color:r
 .rv.in{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
 
+/* ── GATE ── */
+#gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:var(--bg);overflow:hidden}
+.gate-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1600&q=80') center center/cover no-repeat;filter:blur(3px);opacity:.1}
+.gate-card{position:relative;z-index:1;width:100%;max-width:370px;padding:2.5rem;text-align:center}
+.gate-logo{font-family:'DM Serif Display',serif;font-size:2.2rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.2rem;letter-spacing:-.02em}
+.gate-sub{color:var(--sub);font-size:.8rem;margin-bottom:2rem}
+.gate-card input{width:100%;padding:.8rem 1rem;margin-bottom:.7rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;color:var(--text);font-size:.9rem;outline:none;font-family:inherit;transition:all .25s}
+.gate-card input:focus{border-color:rgba(124,58,237,.5);background:rgba(124,58,237,.07);box-shadow:0 0 0 3px rgba(124,58,237,.1)}
+.gate-btn{width:100%;padding:.85rem;background:var(--v);color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .25s}
+.gate-btn:hover{background:#6d28d9;transform:translateY(-2px)}
+.gate-err{color:#fb7185;font-size:.8rem;margin-top:.7rem;display:none}
+#site{display:none}
+
 @media(max-width:768px){.sec{padding:4rem 1.5rem}}
   </style>
 </head>
 <body>
+
+<!-- GATE -->
+<div id="gate">
+  <div class="gate-bg"></div>
+  <div class="gate-card">
+    <div class="gate-logo">TriLayer</div>
+    <div class="gate-sub">Private · access restricted</div>
+    <input type="password" id="gp" placeholder="Password" autocomplete="off" onkeydown="if(event.key==='Enter')auth()"/>
+    <button class="gate-btn" onclick="auth()">Enter →</button>
+    <div class="gate-err" id="ge">Wrong password. Try again.</div>
+  </div>
+</div>
+
+<!-- SITE -->
+<div id="site">
 
 <!-- NAV -->
 <nav id="nav">
@@ -368,6 +396,8 @@ footer{padding:2rem;text-align:center;border-top:1px solid var(--border);color:r
   </div>
 </div>
 
+</div><!-- /site -->
+
 <footer>© 2026 TriLayer Engineering · Portugal · Remote-first</footer>
 
 <script>
@@ -382,6 +412,23 @@ window.addEventListener('scroll',()=>{
 /* ── REVEAL ON SCROLL ── */
 const obs=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* ── AUTH ── */
+const PWHash='a6f344dcd92e3ac9e0984441db433e71d969bc1b33419afd93d39e1d0f752840';
+async function auth(){
+  const p=document.getElementById('gp').value,e=document.getElementById('ge');
+  const h=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(p)))).map(b=>b.toString(16).padStart(2,'0')).join('');
+  if(h===PWHash){
+    sessionStorage.setItem('tl','1');
+    const g=document.getElementById('gate');g.style.transition='opacity .5s';g.style.opacity='0';
+    setTimeout(()=>{g.style.display='none';document.getElementById('site').style.display='block'},500);
+  }else{e.style.display='block';}
+}
+// Auto-login if already authenticated
+if(sessionStorage.getItem('tl')==='1'){
+  document.getElementById('gate').style.display='none';
+  document.getElementById('site').style.display='block';
+}
 </script>
 </body>
 </html>
