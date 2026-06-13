@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <linearGradient id="bgB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0891b2"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="hairB" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#1a3a4a"/>
+      <stop offset="100%" stop-color="#2d5a6e"/>
+    </linearGradient>
+  </defs>
+  <circle cx="120" cy="120" r="115" fill="url(#bgB)"/>
+  <path d="M50 260 Q60 180 120 175 Q180 180 190 260" fill="#1a3a4a" opacity="0.9"/>
+  <path d="M95 260 L108 185 L120 195 L132 185 L145 260" fill="#7dd3fc" opacity="0.3"/>
+  <rect x="105" y="155" width="30" height="30" rx="5" fill="#f5deb3" opacity="0.55"/>
+  <ellipse cx="120" cy="105" rx="38" ry="44" fill="#f5deb3" opacity="0.55"/>
+  <!-- Hair -->
+  <path d="M82 85 Q85 55 120 52 Q155 55 158 85 Q160 75 153 63 Q142 48 120 46 Q98 48 87 63 Q80 75 82 85Z" fill="url(#hairB)"/>
+  <path d="M82 85 Q80 95 82 110 L90 105 Q88 95 88 88 Q86 84 82 85Z" fill="url(#hairB)"/>
+  <path d="M158 85 Q160 95 158 110 L150 105 Q152 95 152 88 Q154 84 158 85Z" fill="url(#hairB)"/>
+  <!-- Beard style -->
+  <path d="M100 130 Q110 148 120 150 Q130 148 140 130 Q135 140 120 142 Q105 140 100 130Z" fill="#1a3a4a" opacity="0.5"/>
+  <!-- Eyes -->
+  <ellipse cx="107" cy="102" rx="4" ry="3.5" fill="#1a3a4a" opacity="0.7"/>
+  <ellipse cx="133" cy="102" rx="4" ry="3.5" fill="#1a3a4a" opacity="0.7"/>
+  <path d="M101 95 Q107 92 113 95" stroke="#1a3a4a" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <path d="M127 95 Q133 92 139 95" stroke="#1a3a4a" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <path d="M120 105 L118 116 Q120 118 122 116Z" fill="#c4a882" opacity="0.45"/>
+  <path d="M112 123 Q120 127 128 123" stroke="#b8967a" stroke-width="1.2" fill="none" opacity="0.45"/>
+  <!-- Smile -->
+  <path d="M112 125 Q120 130 128 125" stroke="#b8967a" stroke-width="1" fill="none" opacity="0.3"/>
+</svg>

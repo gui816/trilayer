@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <linearGradient id="bgA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="hairA" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#2d1b4e"/>
+      <stop offset="100%" stop-color="#4a2d6e"/>
+    </linearGradient>
+    <clipPath id="circleA">
+      <circle cx="120" cy="120" r="115"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="120" cy="120" r="115" fill="url(#bgA)"/>
+
+  <!-- Body/shoulders -->
+  <path d="M50 260 Q60 180 120 175 Q180 180 190 260" fill="#2d1b4e" opacity="0.9"/>
+
+  <!-- Collar/shirt -->
+  <path d="M95 260 L108 185 L120 195 L132 185 L145 260" fill="#c4b5fd" opacity="0.3"/>
+
+  <!-- Neck -->
+  <rect x="105" y="155" width="30" height="30" rx="5" fill="#e8d5b7" opacity="0.6"/>
+
+  <!-- Head shape -->
+  <ellipse cx="120" cy="105" rx="38" ry="44" fill="#e8d5b7" opacity="0.6"/>
+
+  <!-- Hair - top -->
+  <path d="M82 85 Q85 60 120 55 Q155 60 158 85 Q160 78 155 68 Q145 50 120 47 Q95 50 85 68 Q80 78 82 85Z" fill="url(#hairA)"/>
+
+  <!-- Hair - sides -->
+  <path d="M82 85 Q80 95 82 108 Q83 115 86 118 L90 110 Q88 100 88 92 Q86 86 82 85Z" fill="url(#hairA)"/>
+  <path d="M158 85 Q160 95 158 108 Q157 115 154 118 L150 110 Q152 100 152 92 Q154 86 158 85Z" fill="url(#hairA)"/>
+
+  <!-- Eyes -->
+  <ellipse cx="107" cy="102" rx="4.5" ry="3.5" fill="#2d1b4e" opacity="0.7"/>
+  <ellipse cx="133" cy="102" rx="4.5" ry="3.5" fill="#2d1b4e" opacity="0.7"/>
+  <!-- Eyebrows -->
+  <path d="M101 95 Q107 92 113 95" stroke="#2d1b4e" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <path d="M127 95 Q133 92 139 95" stroke="#2d1b4e" stroke-width="1.5" fill="none" opacity="0.4"/>
+
+  <!-- Nose -->
+  <path d="M120 105 L118 116 Q120 118 122 116Z" fill="#c4a882" opacity="0.5"/>
+
+  <!-- Mouth -->
+  <path d="M112 123 Q120 128 128 123" stroke="#b8967a" stroke-width="1.2" fill="none" opacity="0.5"/>
+
+  <!-- Glasses (professional look) -->
+  <rect x="100" y="97" width="16" height="12" rx="3" fill="none" stroke="#c4b5fd" stroke-width="1" opacity="0.6"/>
+  <rect x="124" y="97" width="16" height="12" rx="3" fill="none" stroke="#c4b5fd" stroke-width="1" opacity="0.6"/>
+  <line x1="116" y1="103" x2="124" y2="103" stroke="#c4b5fd" stroke-width="1" opacity="0.6"/>
+
+  <!-- Subtle highlight -->
+  <ellipse cx="110" cy="95" rx="6" ry="4" fill="white" opacity="0.06"/>
+</svg>
